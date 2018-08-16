@@ -5,12 +5,35 @@ import becker.robots.*;
 /** 
  * Practica de los conceptos de Programacion Estructurada
  * @author Fabian Andres Giraldo */
-public class RobotBase
+public class Ejercicio3
 {    
        //Declaracion de Variables -- Forma temporal - No es buena practica tener
        //variables estaticas
         public static City objetos;
         public static Robot estudiante;
+        public static void turnRight(){
+            for(int i=0;i<3;i++){
+                estudiante.turnLeft();
+            }
+        }
+        public static void move(int a){
+            for(int i=0;i<a;i++){
+                estudiante.move ();
+            }
+        }
+        public static void ej3(int b){
+            for(int a=0;a<b;a++){
+                move(1);
+                sub3();
+            }
+            turnRight();
+        }
+        public static void sub3(){
+            boolean puedeTomar = estudiante.canPickThing();
+            if(puedeTomar == true)
+               estudiante.pickThing();
+            
+        }
                          
 	public static void main (String[] args){
             //Declarar la creacion de la ciudad
@@ -19,14 +42,11 @@ public class RobotBase
             
             //Direction.NORTH, EAST, SOUTH, WEST
             //Definicion de la ubicacion del robot, Ciudad, posicion, Direccion, Numero things en el bolso.
-            estudiante = new Robot(objetos,0, 2, Direction.EAST,10);
+            estudiante = new Robot(objetos,1, 0, Direction.EAST,30);
             
 	    //Mover una interseccion en el sentido al cual este apuntando el objeto.
             estudiante.move ();
-            /*
-            //Girar a la izquierda
-            estudiante.turnLeft();
-            
+            /*     
             //Tomando decisiones, Si puedo tomar un Thing
             boolean puedeTomar = estudiante.canPickThing();
             
